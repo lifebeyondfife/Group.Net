@@ -20,11 +20,11 @@ Reason for Group.Net
 
 The Group.Net library is written entirely in C# which makes it much more portable and interoperable with Microsoft platforms. It is also open source.
 
-At present it has almost completely without functionality. The only thing it's capable of is calculating the orbit on a set of points under a permutation group.
+At present it is almost completely without functionality. The only thing it's capable of is calculating the orbit on a set of points under a permutation group.
 
 Everywhere has to start somewhere though.
 
 Future Work
 ===========
 
-The Orbit-Stabiliser algorithm the most likely next item of functionality. After that there will be variations of Set based implementations to go along with the current Point based one.
+The Orbit-Stabiliser algorithm is the most likely next item for implementation. After that there will be variations of Set based implementations to go along with the current Point based one.
