@@ -10,12 +10,12 @@ namespace Group.Net
 	{
 		private readonly PermutationGroup<T> group;
 
-		internal Orbit(PermutationGroup<T> group)
+		public Orbit(PermutationGroup<T> group)
 		{
 			this.group = group;
 		}
 
-		internal HashSet<Points<T>> CalculateOrbit(IEnumerable<Points<T>> pointsBlock)
+		public HashSet<Points<T>> CalculateOrbit(IEnumerable<Points<T>> pointsBlock)
 		{
 			var orbitPoints = new HashSet<Points<T>>(pointsBlock);
 			var queue = new Queue<Points<T>>(orbitPoints);
