@@ -9,6 +9,11 @@ namespace Group.Net
 	{
 		private readonly IList<T> points;
 
+		public int Count
+		{
+			get { return points.Count; }
+		}
+
 		public T this[int index]
 		{
 			get { return points[index]; }
