@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +9,18 @@ namespace Group.Net
 	{
 		private readonly IList<T> points;
 
-		internal T this[int index]
+		public T this[int index]
 		{
 			get { return points[index]; }
 			set { points[index] = value; }
 		}
 
-		internal Points(IList<T> points)
+		public Points(IList<T> points)
 		{
 			this.points = points;
 		}
 
-		internal Points(Points<T> other)
+		public Points(Points<T> other)
 		{
 			points = new List<T>(other.points);
 		}
