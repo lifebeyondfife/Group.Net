@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Group.Net.Groups
@@ -20,6 +20,9 @@ namespace Group.Net.Groups
 		public Points<T> Apply(int index, Points<T> points)
 		{
 			var permutedPoints = new Points<T>(points);
+			
+			if (permutedPoints.Count == 1)
+				return permutedPoints;
 
 			for (var i = 0; i < Generators[index].Count - 1; ++i)
 				permutedPoints[Generators[index][i + 1]] = points[Generators[index][i]];
