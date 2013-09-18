@@ -1,33 +1,55 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Group.Net
 {
-	public class Points<T> : IComparable<Points<T>>, IEnumerable<T> where T : IComparable<T>
+	public class Points : IComparable<Points>, IEnumerable<int>
 	{
-		private readonly IList<T> points;
+		private readonly IList<int> points;
+		private readonly IList<int> index;
 
 		public int Count
 		{
 			get { return points.Count; }
 		}
 
-		public T this[int index]
+		public int this[int idx]
 		{
-			get { return points[index]; }
-			set { points[index] = value; }
+			get { return points[idx]; }
+			set { points[idx] = value; }
 		}
 
-		public Points(IList<T> points)
+		public Points(IEnumerable<int> points)
 		{
-			this.points = points;
+			this.points = points.ToList();
 		}
 
-		public Points(Points<T> other)
+		public Points(params int[] points)
 		{
-			points = new List<T>(other.points);
+			this.points = points.ToList();
+		}
+
+		public Points(Points other)
+			: this(other.points)
+		{
+		}
+
+		public static implicit operator Points(int point)
+		{
+			return new Points(new[] { point });
+		}
+
+		public IEnumerator<int> GetEnumerator()
+		{
+			return points.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return points.GetEnumerator();
 		}
 
 		public override int GetHashCode()
@@ -35,29 +57,19 @@ namespace Group.Net
 			return points.Aggregate(13, (current, point) => (current * 7) + point.GetHashCode());
 		}
 
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
-
-		public int CompareTo(Points<T> other)
+		public int CompareTo(Points other)
 		{
 			return points.Zip(other.points, (f, s) => f.CompareTo(s)).SkipWhile(n => n == 0).FirstOrDefault();
 		}
 
 		public override bool Equals(object obj)
 		{
-			return CompareTo((Points<T>) obj) == 0;
-		}
-
-		public IEnumerator<T> GetEnumerator()
-		{
-			return points.GetEnumerator();
+			return CompareTo((Points) obj) == 0;
 		}
 
 		public override string ToString()
 		{
-			return string.Join(" ", points.Select(n => n.ToString()));
+			return string.Join(" ", points.Select(point => point.ToString(CultureInfo.CurrentCulture)));
 		}
 	}
 }

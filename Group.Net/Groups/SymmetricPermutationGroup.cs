@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Group.Net.Groups
 {
-	public class SymmetricPermutationGroup<T> : PermutationGroup<T> where T : IComparable<T>
+	public class SymmetricPermutationGroup : PermutationGroup
 	{
-		private SymmetricPermutationGroup(IList<IList<int>> generators)
+		private SymmetricPermutationGroup(params Element[] generators)
 			: base(generators)
 		{
 		}
 
 		public SymmetricPermutationGroup(int n)
-			: base(new[] { new List<int>(new[] { 0, 1 }), Enumerable.Range(0, n).ToList() })
+			: base(new Cycle(new[] { 0, 1 }), new Cycle(Enumerable.Range(0, n)))
 		{
+			if (n < 2)
+				throw new ApplicationException("Symmetric Permutation Group must act on at least two points.");
 		}
 	}
 }
