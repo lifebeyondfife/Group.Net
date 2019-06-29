@@ -22,7 +22,7 @@ The Group.Net library is written entirely in C# which makes it much more portabl
 
 At present it doesn't have much functionality. Some capabilities include:
 
- - Create Symmetric, Dihedral and abitrary permutation groups
+ - Create Symmetric, Dihedral and arbitrary permutation groups
  - Orbit calculation: pointwise orbits on (i) a partial set of integer points or (ii) a full image set of CLR objects
  - Stabiliser calculation: pointwise stabiliser.
  - Group optimisation to construct a minimal set of generators
