@@ -48,7 +48,7 @@ namespace Group.Net
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return points.GetEnumerator();
+			return GetEnumerator();
 		}
 
 		public override int GetHashCode()
