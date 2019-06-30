@@ -9,7 +9,6 @@ namespace Group.Net
 	public class Points : IComparable<Points>, IEnumerable<int>
 	{
 		private readonly IList<int> points;
-		private readonly IList<int> index;
 
 		public int Count
 		{
@@ -49,7 +48,7 @@ namespace Group.Net
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return points.GetEnumerator();
+			return GetEnumerator();
 		}
 
 		public override int GetHashCode()
